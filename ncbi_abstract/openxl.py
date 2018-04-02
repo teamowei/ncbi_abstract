@@ -1,13 +1,14 @@
 from openpyxl import load_workbook
+import os
 
 def getOpenxls():
-    f = 'C:\\Users\\Wei\\NCBI\\'
+    f = os.getcwd()
     burl = 'https://www.ncbi.nlm.nih.gov/pubmed/'
-    f_a = f + 'I001_coronary_heart_disease_panel.xlsx'
+    f_a = f + '\\pmid.xlsx'
     wb = load_workbook(f_a)
     sheet1 = wb.get_sheet_by_name('condition')
     sheet2 = wb.get_sheet_by_name('snp_score')
-    xlpath = sheet1['D4'].value
+    xlpath = sheet1['D2'].value
     urlpath = []
     for r in range(1,sheet2.max_row):
         url = sheet2['C'][r].value
